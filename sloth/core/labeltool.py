@@ -322,19 +322,19 @@ class LabelTool(QObject):
         next_image = self._current_image.getNextSibling(step=1)
         self.setCurrentImage(next_image)
         
-        command = ['python', dest, self.currentImage()["filename"]]
-        subprocess.call(command)
-        #execfile(dest)
-
-        # Refresh the annotation (update)
         parser = LaxOptionParser(usage=self.usage,
                                  option_list=BaseCommand.option_list)
+        options, args = parser.parse_args(self.argv)
+        command = ['python', dest, self.currentImage()["filename"], args[1]]
+        subprocess.call(command)
+        #execfile(dest)
 	
         try:
-            options, args = parser.parse_args(self.argv)
             self.loadAnnotations(args[1], handleErrors=False)
         except:
             print 'WARNING: New annotation not loaded!'
+
+        print args[1]
 
         # Select the new image and refresh the GUI accordingly
         #self.setCurrentImage(next_image)

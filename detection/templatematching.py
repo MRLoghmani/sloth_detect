@@ -66,9 +66,9 @@ def annotationAdjustment(rect, ref_img_name, target_img_name):
     print 'Max loc: ', max_loc, 'X: ', (x1,y1), 'Top left: ', top_left, '\nBottom right: ', bottom_right
     cv2.rectangle(target_img, top_left, bottom_right, 255, 2)
     cv2.circle(target_img, peak_loc, 50, [255,255,255], -10)
-    plt.imshow(target_img, cmap='gray')
-    plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-    plt.show()
+    #plt.imshow(target_img, cmap='gray')
+    #plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+    #plt.show()
 
     return top_left
 

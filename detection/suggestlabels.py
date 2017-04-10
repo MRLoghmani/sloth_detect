@@ -23,7 +23,8 @@ except:
 ## TODO: get folder path from external argument
 script_path = sloth_path + '/detection/suggestlabels.py'
 folder_path, _ = os.path.split(script_path)
-labels_path = folder_path + '/*.json'
+#labels_path = folder_path + '/*.json'
+labels_path = sloth_path + '/' + sys.argv[2]
 all_jsons = [file_path for file_path in glob.glob(labels_path)]
 
 if len(all_jsons) < 1:
