@@ -1,3 +1,11 @@
+'''
+
+templatematching.py
+-------------------
+Classical computer vision task: matching a given reference template to a patch of the test image. It is used to correct the position of the propagated labels.
+
+'''
+
 import cv2
 import os
 import numpy as np
@@ -5,6 +13,13 @@ from matplotlib import pyplot as plt
 
 
 def annotationAdjustment(rect, ref_img_name, target_img_name):
+    """
+    Template matching
+    :param rect:            template coordinates in ref_img_name
+           ref_img_name:    name of reference image
+           target_img_name: name of target image
+    :return top_left:       coordinate of the top left corner of the matched patch in target_img_name
+    """
 
     x = int(round(rect[0]))
     y = int(round(rect[1]))
@@ -59,6 +74,9 @@ def annotationAdjustment(rect, ref_img_name, target_img_name):
 
 
 if __name__ == '__main__':
+    '''
+    test
+    '''
 
     rect = [367, 124, 1002, 2223]
     ref_img_name = '/img/001.jpg'

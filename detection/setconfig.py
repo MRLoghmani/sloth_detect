@@ -1,5 +1,6 @@
 '''
 setconfig.py
+------------
 Configuration set up to create the annotation file (.json) for the indicated folder.
 Requires as argument the name of the folder where the target images are stored. If empty, default name 'img' is
 considered.
@@ -33,6 +34,7 @@ if not os.path.isfile(labels_path):
     cont = container.JsonContainer()
     img_folder_path = folder_path + '/' + img_folder_name + '/*'
     img_path = [img for img in glob.glob(img_folder_path)]  # acquire all image paths
+    img_path.sort()
     for i in img_path:
         _, filename = os.path.split(i)
         label = dict()

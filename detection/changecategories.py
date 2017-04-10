@@ -1,10 +1,13 @@
 '''
+
 changecategories.py
+-------------------
 Script that modifies 'myconfig.py' file to change the label categories according to the txt file given as argument.
 The processed txt file follows the following format:
     - Each line is a new category
     - Each category has a alpha-numeric name (no spaces) and a numeric id
     - At each line name and id are separated by one space
+
 '''
 
 import os.path

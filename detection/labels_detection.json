@@ -1,11 +1,49 @@
 [
     {
-        "annotations": [],
+        "annotations": [
+            {
+                "class": "obj",
+                "height": 846.8756756756758,
+                "id": "nerf_gun",
+                "type": "rect",
+                "width": 624.570810810811,
+                "x": 2487.697297297297,
+                "y": 924.5059459459459
+            },
+            {
+                "class": "obj",
+                "height": 642.2140540540539,
+                "id": "mouse",
+                "type": "rect",
+                "width": 448.13837837837855,
+                "x": 1524.376216216216,
+                "y": 892.7481081081081
+            }
+        ],
         "class": "image",
         "filename": "img/001.jpg"
     },
     {
-        "annotations": [],
+        "annotations": [
+            {
+                "class": "obj",
+                "height": 846.8756756756758,
+                "id": "nerf_gun",
+                "type": "rect",
+                "width": 624.570810810811,
+                "x": 2639,
+                "y": 951
+            },
+            {
+                "class": "obj",
+                "height": 642.2140540540539,
+                "id": "mouse",
+                "type": "rect",
+                "width": 448.13837837837855,
+                "x": 1709,
+                "y": 909
+            }
+        ],
         "class": "image",
         "filename": "img/002.jpg"
     },
