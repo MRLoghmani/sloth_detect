@@ -4,8 +4,10 @@ What's different?
 This repo contains a version of the Sloth annotation tool (see below for references) with the addition of a "propagation feature" that allows to save time and propagate labels through similar frames.
 
 List of changes:
-- detection forder;
-- 
+- [Major] detection/*;
+- [Minor] sloth/core/labeltool.py;
+- [Minor] sloth/gui/annotationscene.py;
+- [Minor] sloth/gui/labeltool.py
 
 
 Sloth
