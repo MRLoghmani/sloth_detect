@@ -3,10 +3,13 @@ What's different?
 
 This repo contains a version of the Sloth annotation tool (see below for references) with the addition of a "propagation feature" that allows to save time and propagate labels through similar frames.
 
+List of changes:
+- detection forder;
+- 
+
+
 Sloth
 =====
-
-[![Build Status](https://travis-ci.org/cvhciKIT/sloth.svg)](https://travis-ci.org/cvhciKIT/sloth)
 
 sloth is a tool for labeling image and video data for computer vision research.
 
