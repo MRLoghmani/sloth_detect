@@ -1,0 +1,27 @@
+[
+    {
+        "annotations": [],
+        "class": "image",
+        "filename": "img/001.jpg"
+    },
+    {
+        "annotations": [],
+        "class": "image",
+        "filename": "img/002.jpg"
+    },
+    {
+        "annotations": [],
+        "class": "image",
+        "filename": "img/003.jpg"
+    },
+    {
+        "annotations": [],
+        "class": "image",
+        "filename": "img/004.jpg"
+    },
+    {
+        "annotations": [],
+        "class": "image",
+        "filename": "img/005.jpg"
+    }
+]

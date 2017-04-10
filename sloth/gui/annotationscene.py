@@ -81,7 +81,7 @@ class AnnotationScene(QGraphicsScene):
             self.clear()
             self._image_item = current_image
             current_image._seen = True
-            assert self._image_item.model() == self._model
+            #assert self._image_item.model() == self._model
             self._image      = self._labeltool.getImage(self._image_item)
             self._pixmap     = QPixmap(toQImage(self._image))
             self._scene_item = QGraphicsPixmapItem(self._pixmap)

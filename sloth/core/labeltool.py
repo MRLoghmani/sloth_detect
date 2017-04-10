@@ -3,6 +3,8 @@ This is the core labeltool module.
 """
 import os
 import sys
+import subprocess
+import numpy as np
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from sloth.annotations.model import *
@@ -303,6 +305,42 @@ class LabelTool(QObject):
 
             if next_image is not None:
                 self.setCurrentImage(next_image)
+
+    def gowithPropagation(self, step=1):
+       
+        # Save the current state of the app
+        self._mainwindow.fileSave()
+
+        # Select proper directory and execute label propagation policy
+        dest = os.path.abspath(__file__)
+        for i in np.arange(1,4):
+            dest, _ = os.path.split(dest)
+        dest = dest + '/detection/suggestlabels.py'
+
+        # Select the new image and refresh the GUI accordingly
+        #previous_image = self._current_image
+        next_image = self._current_image.getNextSibling(step=1)
+        self.setCurrentImage(next_image)
+        
+        command = ['python', dest, self.currentImage()["filename"]]
+        subprocess.call(command)
+        #execfile(dest)
+
+        # Refresh the annotation (update)
+        parser = LaxOptionParser(usage=self.usage,
+                                 option_list=BaseCommand.option_list)
+	
+        try:
+            options, args = parser.parse_args(self.argv)
+            self.loadAnnotations(args[1], handleErrors=False)
+        except:
+            print 'WARNING: New annotation not loaded!'
+
+        # Select the new image and refresh the GUI accordingly
+        #self.setCurrentImage(next_image)
+        self._mainwindow.onCurrentImageChanged()
+        #self._mainwindow.onAnnotationLoaded()
+
 
     def gotoPrevious(self, step=1):
         if self._model is not None and self._current_image is not None:

@@ -124,7 +124,8 @@ class MainWindow(QMainWindow):
     def onCurrentImageChanged(self):
         new_image = self.labeltool.currentImage()
         self.scene.setCurrentImage(new_image)
-        self.onFitToWindowModeChanged()
+        #self.onFitToWindowModeChanged()
+        self.view.fitInView()
         self.treeview.scrollTo(new_image.index())
 
         img = self.labeltool.getImage(new_image)
@@ -388,6 +389,7 @@ class MainWindow(QMainWindow):
             self.labeltool.clearAnnotations()
 
     def fileOpen(self):
+        print 'Debug gui/labeltool/fileOpen()'
         if not self.okToContinue():
             return
         path = '.'
@@ -403,7 +405,9 @@ class MainWindow(QMainWindow):
             self.labeltool.loadAnnotations(fname)
 
     def fileSave(self):
+        print 'Debug gui/labeltools/fileSave()'
         filename = self.labeltool.getCurrentFilename()
+        print filename
         if filename is None:
             return self.fileSaveAs()
         return self.labeltool.saveAnnotations(filename)
