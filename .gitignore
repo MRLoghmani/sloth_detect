@@ -1,6 +1,8 @@
 doc/_build/*
 *.pyc
 .*.swp
-*.py~
+*.swo
+*~
+.py~
 build/*
 .cache

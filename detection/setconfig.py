@@ -28,8 +28,14 @@ else:
 # Managing paths based on current directory
 folder_path = os.path.dirname(os.path.realpath(__file__))       # global path: current dir
 _, folder_name = os.path.split(folder_path)                     # need to isolate folder name
+root_seq_folder, sequence_folder = os.path.split(sequence_folder)
+if not sequence_folder:
+    _, sequence_folder = os.path.split(root_seq_folder)
+#print 'Sequence folder: ', sequence_folder
 folder_path = folder_path + '/' + sequence_folder
-labels_path = folder_path + '/labels_' + folder_name + '.json'  # path to annotation file
+#print 'Folder path: ', folder_path
+labels_path = folder_path + '/labels_' + sequence_folder + '.json'  # path to annotation file
+#print 'Labels path: ', labels_path
 
 annotation = []
 
@@ -38,7 +44,8 @@ annotation = []
 if not os.path.isfile(labels_path):
     cont = container.JsonContainer()
     img_folder_path = folder_path + '/' + img_folder_name + '/*'
-    if not os.path.isfile(folder_path + '/' + img_folder_name):
+    if not os.path.isdir(folder_path + '/' + img_folder_name):
+        print folder_path + '/' + img_folder_name
         err_msg = 'Error: no dir named <' + img_folder_name + '> in ' + folder_path
         sys.exit(err_msg)
     img_path = [img for img in glob.glob(img_folder_path)]  # acquire all image paths
@@ -52,5 +59,4 @@ if not os.path.isfile(labels_path):
 
     cont.serializeToFile(labels_path, annotation)
 else:
-    print 'The file <' + labels_path + \
-          '> already exists.\nIf you want to create a new one, please delete of move the file.'
+    print 'The file <' + labels_path + '> already exists.\nIf you want to create a new one, please delete of move the file.'
