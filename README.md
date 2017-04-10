@@ -13,7 +13,8 @@ How to start?
 =============
 
 For general installationa and usage information, please refer to the original documentation: https://sloth.readthedocs.io/en/latest/
-For specific instruction about the usage of the propagation feature, please refer to detection/README.md.
+
+For specific instruction about the usage of the propagation feature, please refer to detection/README.md
 
 
 Sloth
