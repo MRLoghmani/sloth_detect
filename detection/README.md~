@@ -1,7 +1,11 @@
-###########################################################################
-###					  SLOTH - LABEL PROPAGATION							###
-###########################################################################
+SLOTH - LABEL PROPAGATION
+=========================
 
+>>> Workspace structure:
+
+Each sequence of frames needs a different folder and will refer to a different annotation file (.json)
+
++ 
 
 
 >>> Before annotating:

@@ -14,16 +14,21 @@ from sloth.annotations import container
 
 if len(sys.argv) > 1:
     if sys.argv[1] == '--help':
-        print 'Give as argument the name of the folder containing the unlabelled images. Default = img'
+        sys.exit('python setconfig.py <arg1> [<arg2>]\narg1: name folder containing the sequence of frames to annotate\narg2: optional argument indicating the name of the folder containing the considered frames [Default = img]')
         sys.exit(0)
-    else:
-        img_folder_name = sys.argv[1]
+    elif len(sys.argv) == 2:
+        img_folder_name = 'img'
+        sequence_folder = sys.argv[1]
+    elif len(sys.argv) == 3:
+        img_folder_name = sys.argv[2]
+        sequence_folder = sys.argv[1]
 else:
-    img_folder_name = 'img'
+    sys.exit('Error: expected at least 1 argument, 0 given. Give --help as argument for furthe information.')
 
 # Managing paths based on current directory
 folder_path = os.path.dirname(os.path.realpath(__file__))       # global path: current dir
 _, folder_name = os.path.split(folder_path)                     # need to isolate folder name
+folder_path = folder_path + '/' + sequence_folder
 labels_path = folder_path + '/labels_' + folder_name + '.json'  # path to annotation file
 
 annotation = []
@@ -33,6 +38,9 @@ annotation = []
 if not os.path.isfile(labels_path):
     cont = container.JsonContainer()
     img_folder_path = folder_path + '/' + img_folder_name + '/*'
+    if not os.path.isfile(folder_path + '/' + img_folder_name):
+        err_msg = 'Error: no dir named <' + img_folder_name + '> in ' + folder_path
+        sys.exit(err_msg)
     img_path = [img for img in glob.glob(img_folder_path)]  # acquire all image paths
     img_path.sort()
     for i in img_path:
