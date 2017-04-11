@@ -1,7 +1,7 @@
 SLOTH - LABEL PROPAGATION
 =========================
 
->>> Before annotating:
+# Before annotating:
 
 Each sequence of frames needs a different folder and will refer to a different annotation file (.json)
 + Create a new working directory for a sequence of frames
@@ -19,7 +19,7 @@ Set up the configurations you need:
 $ cd ..
 $ python setconfig.py <ws_folder_name>
 
->>> Start annotating:
+# Start annotating:
 
 + Launch Sloth
 $ cd $SLOTH
