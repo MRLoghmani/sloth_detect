@@ -28,5 +28,3 @@ $ python sloth/bin/sloth --config detection/myconfig.py detection/labels_detecti
 + Propagate the labels by pressing the Space button
 
 
-
-
