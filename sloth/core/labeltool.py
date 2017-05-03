@@ -315,6 +315,7 @@ class LabelTool(QObject):
         dest = os.path.abspath(__file__)
         for i in np.arange(1,4):
             dest, _ = os.path.split(dest)
+            print dest
         dest = dest + '/detection/suggestlabels.py'
 
         # Select the new image and refresh the GUI accordingly
@@ -325,12 +326,14 @@ class LabelTool(QObject):
         parser = LaxOptionParser(usage=self.usage,
                                  option_list=BaseCommand.option_list)
         options, args = parser.parse_args(self.argv)
+        print self.currentImage()["filename"]
         command = ['python', dest, self.currentImage()["filename"], args[1]]
         subprocess.call(command)
         #execfile(dest)
 	
         try:
             self.loadAnnotations(args[1], handleErrors=False)
+            print args[1]
         except:
             print 'WARNING: New annotation not loaded!'
 

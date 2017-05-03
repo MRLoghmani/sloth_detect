@@ -12,7 +12,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def annotationAdjustment(rect, ref_img_name, target_img_name):
+def annotationAdjustment(rect, ref_img_name, target_img_name, working_dir):
     """
     Template matching
     :param rect:            template coordinates in ref_img_name
@@ -32,10 +32,13 @@ def annotationAdjustment(rect, ref_img_name, target_img_name):
 
     DIR = os.path.dirname(os.path.abspath(__file__))
 
-    ref_img = cv2.imread(DIR + ref_img_name, 0)
+    ref_img = cv2.imread(DIR + '/' + working_dir + ref_img_name, 0)
+    print '*****************', DIR + '/' + working_dir + ref_img_name
     w_ref_img, h_ref_img = ref_img.shape[::-1]
-    target_img = cv2.imread(DIR + target_img_name, 0)
-    print DIR + ref_img_name , '\n', DIR + target_img_name
+
+    
+    target_img = cv2.imread(DIR + '/' + working_dir + target_img_name, 0)
+    print '******************', DIR + '/' + working_dir + target_img_name
     template = ref_img.copy()
     template = template[y:y+delta_y, x:x+delta_x]
 

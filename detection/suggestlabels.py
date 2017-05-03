@@ -25,6 +25,8 @@ script_path = sloth_path + '/detection/suggestlabels.py'
 folder_path, _ = os.path.split(script_path)
 #labels_path = folder_path + '/*.json'
 labels_path = sloth_path + '/' + sys.argv[2]
+wd = os.path.split(os.path.dirname(sys.argv[2]))
+wd = wd[1]
 all_jsons = [file_path for file_path in glob.glob(labels_path)]
 
 if len(all_jsons) < 1:
@@ -49,7 +51,7 @@ elif len(all_jsons) == 1:
         ref_img_name = '/img/' + '%03d.jpg' %(img_num - 1)
         target_img_name = '/img/' + '%03d.jpg' %img_num
 
-        top_left = annotationAdjustment( rect, ref_img_name, target_img_name)
+        top_left = annotationAdjustment( rect, ref_img_name, target_img_name, wd )
         a["x"] = top_left[0]
         a["y"] = top_left[1]		
 
