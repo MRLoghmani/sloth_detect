@@ -16,21 +16,31 @@ else:
     cont = container.JsonContainer()
     frames = cont.parseFromFile(label_path)
 
+    crop_num = 0
+
     for f in frames:
         img_name = f["filename"]
         img = cv2.imread(DIR + '/' + img_name)
-        print DIR + img_name
+        print DIR + '/' + img_name
         crop_path = DIR + '/crop/' + img_name
-        if not os.path.exists(crop_path):
-            os.makedirs(crop_path)
-        for num, a in enumerate(f["annotations"]):
+        plt.imshow(img)
+        #plt.show()
+
+        for a in f["annotations"]:
+            print '*************', img_name, a["id"]
+            categ = a["id"]
+            categ_path = DIR + '/crop/' + categ
+            if not os.path.exists(categ_path):
+                os.makedirs(categ_path)
             x = int(round(a["x"]))
             y = int(round(a["y"]))
             delta_y = int(round(a["height"]))
             delta_x = int(round(a["width"]))
             crop = img[y:y+delta_y, x:x+delta_x, :]
-            plt.imshow(crop)
-            plt.show()
+            #plt.imshow(crop)
+            #plt.show()
 
-            cv2.imwrite(crop_path + '/' + a["id"] + '_' + str(num), crop)
+            crop_num += 1
+
+            cv2.imwrite(categ_path + '/' + str(crop_num) + '.png', crop)
 
